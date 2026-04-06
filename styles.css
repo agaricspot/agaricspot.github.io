@@ -88,7 +88,7 @@ body{
     user-select: none;
 }
 .next{
-    right:0;
+    right:0px;
     border-radius: 3px 0 0 3px;
 }
 .prev:hover, .next:hover{
@@ -130,5 +130,9 @@ body{
     border:black; 
     border-width: 5px;
     border-style: solid;
+
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #858585;
 
 }
