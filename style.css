@@ -1,0 +1,751 @@
+/*GENERAL*/
+
+/*set html & body to default font and page color*/
+html, body {
+  font-family: "IM Fell English", "Georgia", serif;
+  background-color: #f0e4c8;
+  margin:0;
+}
+/*surrounds page content with  a border*/
+.pg{
+   border: 10px double #b8892b;
+   padding: 28px;
+   min-height: 90vh;
+   display: flex;
+   flex-direction: column;
+}
+/*set default h2 font*/
+h2{
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+}
+/*set default h1 font & styling*/
+h1{
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+    font-size: 3em;
+    color: #1e3a78;
+    text-align: center;
+}
+/*nav bar. space between sets elements apart from one another */
+.topnav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding:0;
+    padding-bottom: 14px;
+    font-size: .9em;
+    letter-spacing: .14em; /* more spacing*/
+    text-transform: uppercase;
+   
+}
+/*span element in topnav. groups navigation buttons away from logo*/
+.topnav span{ 
+    display:flex;
+    flex-wrap:wrap; 
+    gap: 28px;
+}
+/*style links to remove underline and set color*/
+.topnav a {
+    color:#a82d1a; 
+    text-decoration: none;
+}
+/*current page is colored blue & underlined*/
+.topnav a.active{ 
+    color: #1e3a78;
+    text-decoration: underline;
+    text-underline-offset: .25em;
+    text-decoration-color: #a81f0a;
+}
+/*darken for responsiveness*/
+.topnav a:hover{
+    color: #8e0e0e;
+}
+.topnav a.active:hover{
+    color:#182a70;
+}
+
+/*styled to be blackletter initials with reduced letter spacing. will be changed to
+a monogram for future development*/
+.logo{
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+    letter-spacing:-2px;
+    font-size: 1.5em;
+    text-transform: none;
+    padding:0;
+    margin:0; 
+}
+
+.foot{ /*styling override for footer navigation*/
+    padding-top: 20px;
+    margin:5px;
+    border-top: 3px double #b8892b;
+    border-bottom: 3px double #b8892b;
+}
+
+/*repeating linear gradient pattern. housed in a div to use as a dividier*/
+.bar{ 
+    height: 12px;
+    background: repeating-linear-gradient(90deg, 
+         #1e3a78,
+         #1e3a78 24px,
+         #b8892b 24px,
+         #b8892b 28px,
+         #a82d1a 28px,
+         #a82d1a 52px,
+         #b8892b 52px, 
+         #b8892b 56px);
+}
+
+/*footer*/
+/* set footer text to uppercase and create border.*/
+.footer {
+  margin-top: auto;
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-size: .7em;
+  color: #a81f0a;
+  border-top: 8px double #b8892b;
+}
+/*container that aligns see post button aand post content like the navigation buttons*/
+.f1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding-top: 5px;
+    letter-spacing: .14em; /* more spacing*/
+}
+/*content fetched from tumblr. styled to be smaller. remove underline from anchor.*/
+#f{
+    font-style: italic;
+    display: flex;
+    flex-wrap: wrap;
+    gap:28px;
+    font-size:.9em;
+    letter-spacing:.08em;
+    text-transform: none !important;
+}
+/*link styling for link to post*/
+#post{
+    color: inherit;
+    text-decoration: none;
+}
+#post:hover{/*darken for responsiveness*/
+    color: #8e0e0e;
+}
+
+/*arrow button creation. border of square div with just bottom and right visible*/
+.arrow{
+    color:inherit;
+    border: solid currentColor; /*change with parent's color */ 
+    border-width: 0 3px 3px 0; 
+    display: inline-block; 
+    padding: 3px;
+    transform-style: preserve-3d; /* known bug where rotating a shape can cause the faces to behave strangely. solves this issue*/
+}
+.right{
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); /* i am aware webkits cause warnings, but iirc they make the side more backwards compatible*/
+    background: transparent;
+}
+.left{
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    background: transparent;
+}
+.s{
+    color:#a81f0a; /*slideshow buttons. wanted them larger*/
+    scale: 150%;
+}
+.arrow:hover{
+    color: #8e0e0e;
+}
+
+
+/*rounded arch div.*/
+.arch{
+    position: relative;
+    z-index: 1; /*sets in front of other divs*/
+    background: #1e3a78; 
+    border: double 8px #b8892b;
+    border-radius: 999px 999px 0 0; /*round top*/
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/*LANDING*/
+
+/*arch display, flex container of arch frames*/
+.wall {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12%;
+    padding: 24px 0;
+    --h: max(480px, calc(100vh - 290px));  /*sets a minimum size for the arch*/
+    flex: 1;
+}
+/*styling for the center arch*/
+.center{
+    height: var(--h); /*height set to wall miniumum*/
+    width: auto;             
+    aspect-ratio: .63;
+    flex: none; /*dont grow or shrink*/
+    color: #f3c569; /*text color*/ 
+    justify-content: center;
+    align-items: center;
+}
+/*small arch styling*/
+.side{
+    height: calc(var(--h) * .72); /*72% of --h var*/
+    width: auto;
+    aspect-ratio: .42;
+    flex: none; /*no shrink or grow*/ 
+    display:inline;
+}
+/*floor div*/
+.floor{
+    background: #dccead; /*darken to give 3D effect*/
+    position:absolute; 
+    left:0; right: 0; 
+    height:61px;
+    bottom:0px; /*stick to bottom of page*/
+}
+
+/*content. set color */
+.info{
+    position:absolute;
+    color:#f3c569;
+    bottom:0px;
+    left:0;
+    margin-bottom: 60px;
+}
+.center h1{ /*set coloring  of text*/
+    margin: 0;
+    margin-bottom: 30px;
+    color:inherit;
+}   
+.button{
+    border: solid 2px #f3c569;
+    color: inherit; 
+    padding: 10px;/*space within button*/
+    text-decoration: none !important; /*remove link coloring and underline*/
+    text-transform: uppercase;
+    font-size: .8em;
+}
+/*small about text*/
+.blurb{
+    text-align: justify; /*keep sides flat to fit in arch nicely*/
+    padding:15px;
+    padding-top: 0;
+    margin-top: -20px;
+}
+/*wheel svg*/
+.arch svg {
+    margin:0;
+    fill: none; /*just lines*/
+    stroke-width: 3px;
+    stroke: #f3c569; /*set stroke color*/
+    padding-bottom: 20px;
+}
+
+
+/*CONTACT PAGE*/
+.contact{
+    display: flex;
+    gap: 3%;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 200px; 
+    margin-bottom: 28px;
+}
+.sidebar{
+    box-sizing: border-box;
+    flex: 1 1 0; 
+    min-width: 0;
+}
+.l{
+    text-align: right !important;
+    border-right: solid #2b1d12 1px;
+    padding-right: 20px;
+}
+.r{
+    text-align: left !important;
+    border-left: solid #2b1d12 1px;
+    padding-left:20px
+}
+
+.contact p, .below p{
+    font-style: italic;
+    padding:0; 
+    margin: 0; 
+}
+
+aside{
+    white-space: normal;
+}
+.caps{
+    text-transform: uppercase !important;
+    color:#a81f0a; 
+    font-style:normal !important;
+}
+/*hidden div to display on smaller screens.*/
+.below{
+    display: flex;
+    flex-direction: column; /*stack vertical*/
+    gap: 3%;
+    text-align: center;
+    max-width: 35%; /*dont take up more than 35% of screen*/
+    
+}
+/*styling for for divs in below*/
+.below div{
+    display: flex;
+    flex-direction: column;/*stack vertical*/
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+/*link styling*/
+.contact a{
+    text-decoration: none;
+    color: #1e3a78;
+}
+.contact a:hover{/*darken for responsiveness*/
+    color: #182a70;
+}
+/*contact form*/
+.letter{
+    flex: 3 1 480px; /*takes up more of screen with min 480px*/
+    max-width: 640px; 
+}
+.letter p{ /*repmve italic styling*/
+    font-style: normal;
+}
+/*letter head*/
+.greeting{
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+    color:#a81f0a;
+    font-size: 2em;
+    margin: 0 0 18px; 
+}
+/*subheading*/
+.intro{
+    margin: 0 0 12px; 
+    padding-bottom: 6px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #d9c79c; /*thin divider*/
+}
+/*label styling. caps, color, size, and spacing*/
+label{
+    display: block;
+    margin-top: 18px; 
+    font-size: .8em;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color:#a81f0a;
+}
+/*styles input & textarea fields*/
+input, textarea{
+    display: block;
+    width: 100%; 
+    box-sizing: border-box;
+    font: inherit; 
+    font-size: 1em;
+    color: #2b1d12;
+    background: transparent; /*just see page color*/
+    border: 0; 
+    border-bottom: 1px solid #2b1d12; 
+    padding: 6px; 
+}
+/*override to give textarea a full surrounded box*/
+textarea{
+    border: 1px solid #2b1d12; 
+    padding: 10px; 
+    margin-top: 4px;
+    resize: vertical;/*only get taller*/
+}
+/*when clicked in, blue border*/
+input:focus, textarea:focus{ outline: 2px solid #1e3a78;}
+
+/*container to hold stamp and note*/
+.send{
+    display: flex; 
+    align-items: 
+    center; gap: 18px; 
+    margin-top: 26px;
+}
+
+/*wax seal styled button*/
+.seal{
+    width:96px;
+    height:96px;
+    border-radius: 999px;
+    border: 6px double #b8892b; 
+    background: #a81f0a;
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+    font-size: 1.5em;
+    color:#f3c569;
+    cursor: pointer; /*shows it is clickable*/
+}
+/*darken on hover for responsiveness*/
+.seal:hover{background: #8e0e0e;}
+
+/*shrink note and make italic*/
+.note{
+    font-style: italic;
+    font-size: .9em;
+    color:#2b1d12
+}
+
+/*ABOUT*/
+
+/*container grid with 3 columns & 2 rows*/
+.about{
+    display: grid;
+    grid-template-columns: 350px minmax(0, 1fr);  /* fixed | everything else */
+    grid-template-rows: auto 1fr;
+    column-gap: 28px;
+    row-gap: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 28px 28px 0;
+}
+/*arch shape container for photo*/
+.portrait{
+    grid-row: 1 / 3; /*take up 2 rows*/
+    width: 100%;          
+    aspect-ratio: .78;
+    margin: 0;             
+    padding: 0;
+    box-sizing: border-box;
+    align-self: start;
+}
+.portrait img{ /*photo within arch*/
+   display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 999px 999px 0 0;   /* follows the arch's curve */
+    box-sizing: border-box;
+    padding: 20px; /*show the blue background as a border*/
+}
+/*about me paragraphs in 2 column display*/
+.textcontent{
+    border-left: 1px solid #2b1d12;
+    columns: 2 220px;      /* up to 2 columns, each at least 220px wide */
+    column-gap: 20px;
+    line-height: 1.5;
+    padding-left: 20px;
+    margin-top: 28px;
+}
+.textcontent p{ /*fix random hanging line from first column*/
+    break-inside: avoid;
+    margin:0 0 1em;  
+}
+/*large block letter*/
+.initial{
+    --size: clamp(56px, 12vw, 114px); /*set min preferred and max sizes for initial*/
+
+    float: left; 
+    width: var(--size);/*keep roughly square*/
+    max-width: var(--size);
+    flex:none; /*dont grow or shrink (kept it from staying square)*/
+    overflow: hidden;
+
+    /*letter*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0px 6px 0 0;
+    background:#1e3a78;
+    border: 6px double #b8892b;
+    font-family: 'UnifrakturCook', 'UnifrakturMaguntia', 'Old English Text MT', serif;
+    font-size: calc(var(--size)*.6); /*dynamically calculate font size to remove overflow*/
+    color: #f3c569;
+
+}
+.sr{ /*for screen readers, ignoring big initial, reads just regular hidden text*/
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/*short cv section boxes*/
+.cv{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);  /* always a 1 : 1.5 split */
+    gap: 20px;
+    align-items: stretch; /*keep box heights even*/
+    padding-left: 15px;
+    border-left: 1px solid #2b1d12;
+    align-self: end;
+}
+/*text styling for cv*/
+.ed, .proj{
+    min-width: 0; /*shrink with boxes*/     
+    box-sizing: border-box;
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: 30px;
+    border: 8px double #d9c79c;
+    overflow-wrap: anywhere;   /* long word doesnt keep box wide */
+    justify-content: flex-start;
+}
+
+
+/*PORTFOLIO*/
+
+/*top section with name and links*/
+.hero{
+    overflow: hidden;
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); /*three columns*/ 
+    align-items: end;
+}
+
+/*name & blurb*/
+.main{
+    position: relative;
+    z-index: 2; /*keep at top*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.hero .text h1{ /*keep lines closer*/
+    margin:0; 
+    line-height: 1;
+}
+/*occupation*/
+.role{
+    margin: 6px 0 0;
+    font-style: italic;
+}
+/*styling for list of links*/
+.links{
+    position: relative;
+    z-index: 2;
+    display: flex; /*make horizontal*/
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    list-style: none;/*remove bullets*/
+    padding: 2px; 
+}
+.links img{/*set images used as links to be 20px squares*/
+    width: 20px; 
+    height: 20px;
+}
+.links img:hover{ /*black so move on hover for responsiveness*/
+    transform: translateY(-2px)!important;
+}
+
+/*container for side arches*/
+.heroside{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap:12px;
+}
+.heroarch{
+    position: relative;
+    flex: none;
+    grid-column: 2; /*set location*/
+}
+/*set padding for heroside based on whether its right or left*/
+.sidel{ padding-right: 2.5em; }
+.sider{ padding-left: 2.5em; flex-direction: row-reverse; }/*reverse flex direction so tall arch sits to right*/
+/*set taller height for half edge arch*/
+.edgel, .edger{ width: 160px; height: 190px;}
+.edgel{ margin-left: -70px; }          /* half hidden by the header's edge */
+.edger{ margin-right: -70px; order:-1;}
+.innerl, .innerr{ width: 140px; height: 150px; } /*set shorter height of inner arches
+
+
+/*similar to floor, commented out stylings for future development.*/
+.ledge{
+    grid-column: 1/-1;
+    position: relative; 
+    margin-top: -2px;
+    z-index: 0;
+    height: 82px;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    background: #dccead;
+}
+/* styling for future development
+.toggle{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color:#a81f0a;
+}
+.toggle:hover { color: #8e0e0e; }
+
+.arrow.down{
+    padding: 5px;
+    margin-top: -4px;
+    transform: rotate(45deg);
+    transition: transform .3s ease;
+}*/
+/*portfolio projects
+.drawer{
+    display: grid;
+    /*grid-template-rows: 0fr;
+    transition: grid-template-rows .35s ease; 
+}
+/* styling for toggle
+.drawer.open{ grid-template-rows: 1fr;}
+.drawer.inner{overflow: hidden; min-height: 0;}
+
+.toggle[aria-explanded="true"] .arrow.down{
+    transform:rotate(225deg);
+    margin-top:4px; 
+}*/
+
+/*3 col grid container for slideshow and information*/
+.work{
+    display:grid;
+    grid-template-columns:minmax(120px, 1fr) minmax(0, 2.4fr) minmax(120px, 1fr); /*slideshow col widest, sets min and max sizes*/
+    gap: 28px; 
+    padding: 28px 0 28px 0;
+    margin: 5px 0 5px;
+    border-top: 5px double #b8892b;
+
+}
+/*meta information about project*/
+.work-meta{
+    text-align: right;
+    border-right: 1px solid #2b1d12;
+    padding-right: 10px;
+}
+/*tools and skills used on project*/
+.work-tools{
+    text-align: left;
+    border-left: 1px solid #2b1d12;
+    padding-left: 10px;
+}
+.work-tools, .work-meta{
+    font-size: clamp(.7rem, 1.1vw + .25rem, 1rem); /*scaling font with window*/
+    overflow-wrap: anywhere; /*avoid long word keeping a col wide*/
+    min-width: 0;
+}
+/*make inner text smaller & italic*/
+.work-meta p, .work-tools p {margin:0; font-style: italic; font-size: .95em;}
+
+/*set h3 for work class divs*/ 
+.work h3{
+    margin: 0 0 8px; 
+    font-size: 1.7em;
+    line-height: 1.1;
+    color:#1e3a78
+}
+
+/* slideshow*/
+.slides{
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto; /*three cols to accomodate buttons*/
+    align-items:center; 
+    gap: 10px;   
+}
+/*images*/
+.slidetrack{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /*hide scrollbar*/
+    aspect-ratio: 1600/900; /*sizing*/
+    padding:5px;
+    border: 5px double #b8892b
+}
+.slidetrack::-webkit-scrollbar{display:none;}/*for older browsers*/
+/*images within slideshow*/
+.slidetrack figure{
+    flex: 0 0 100%;
+    margin: 0; 
+    scroll-snap-align: center; 
+}
+.slidetrack img,.slidetrack iframe{ 
+    display: block;
+    width:100%;
+    height:100%;
+    object-fit:cover; /*fill area by width*/
+}
+/*remove iframe border*/
+iframe{
+    border: none;
+}
+/*set project descripton to italic*/
+.work-desc{
+    margin: 12px 0 0;
+    padding: 0 38px 10px; /*keep inline with image*/
+    line-height: 1.5;
+    font-style: italic;
+}
+/*animation class for changing slides*/
+.fade{
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade{
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+/*MEDIA QUERIES*/
+@media (max-width: 1100px){ 
+    /*contact*/
+    aside{display: none;}/*display a different div with same information that works better on small screens*/
+    .below{display: flex;}
+    /*about*/
+    .cv{ grid-template-columns: minmax(0, 1fr);} /*set to 1 column*/   
+    .about{ grid-template-columns:  minmax(0, 1fr);} /*set to 1 column*/
+    .portrait{
+        grid-row: auto;            /* stops spanning 2 rows*/
+        justify-self: center;      /* center in column*/
+        width: min(100%, 400px);   /* not wider than 400px*/
+        margin: 0 auto 20px;
+        align-self: start;
+    }
+    /*portfolio*/
+    .r2,.l2{display: none;} /*remove inner portfolio arches*/
+}
+   
+@media (min-width: 1100px){ /*revert when screen widens again on contact page*/
+    aside{display:initial}
+    .below{display: none;}
+    
+   
+}
+@media (max-width: 700px){ 
+    .side{ display: none; } /*remove extra landing arches*/
+    /*portfolio page column spacing changes for small screens*/
+    .hero{ grid-template-columns: minmax(0, 1fr); }
+    .hero-center{ grid-column: 1; }
+}
+
+@media (max-width: 1000px) { /*remove second set of arches on portfolio header*/
+  .innerl, .innerr { display: none; }
+}
+
+@media (max-width: 900px){
+    .work{ grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .work-meta, .work-tools{ text-align: left; border: 0; padding: 0; }
+}
